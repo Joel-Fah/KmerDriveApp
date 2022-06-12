@@ -1,0 +1,86 @@
+{% extends 'main_app.html' %}
+{% load static %}
+
+{% comment %} Title of the page {% endcomment %}
+{% block title %}My Account{% endblock title %}
+
+{% comment %} Body of the page {% endcomment %}
+{% block body %}
+
+<div class="account-info">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="account-hero">
+                <div class="profile-img">
+                    {% for info in query %}<img src="{{info.imageURL}}" alt="" class="img-fluid">{% endfor %}
+                </div>
+                <div class="account-text">
+                    <h4><span>#</span>{{request.user.username}}</h4>
+                    <h5>{{request.user.get_full_name}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <small class="text-warning">
+                {{profile_account_info.last_modified}}
+            </small>
+            <h3>Actual User Info</h3>
+            <div class="actual-info">
+                <label for="">Username</label>
+                <div class="info">
+                    <h6>{{request.user.username}}</h6>
+                </div>
+            </div>
+            <div class="actual-info">
+                <label for="">First Name</label>
+                <div class="info">
+                    <h6>{{request.user.first_name}}</h6>
+                </div>
+            </div>
+            <div class="actual-info">
+                <label for="">Last Name</label>
+                <div class="info">
+                    <h6>{{request.user.last_name}}</h6>
+                </div>
+            </div>
+            <a href="{% url 'webapp:update_profile' pk.id user.username %}" class="btn modify">Modify</a>
+
+            <hr class="w-75">
+
+            <h3>Actual Profile Info</h3>
+            {% if user.is_authenticated %}
+            {% for info in query %}
+            <div class="actual-info">
+                <label for="">Profile image</label>
+                <div class="">
+                    <img src="{{info.imageURL}}" class="img-fluid" alt="{{request.user.username}}">
+                </div>
+            </div>
+            <div class="actual-info">
+                <label for="">Phone Number</label>
+                <div class="info">
+                    <h6>{{info.phone}}</h6>
+                </div>
+            </div>
+            <div class="actual-info">
+                <label for="">Vehiculated ?</label>
+                <div class="info">
+                    <h6>{{info.vehiculated}}</h6>
+                </div>
+            </div>
+            <div class="actual-info">
+                <label for="">About Me</label>
+                <div class="info">
+                    <p>
+                        {{info.about}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <a href="{% url 'webapp:update_user' pk.id user.username %}" class="btn modify">Modify</a>
+        </div>
+
+    </div>
+</div>
+{% endblock body %}

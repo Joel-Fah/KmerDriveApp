@@ -1,0 +1,443 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% comment %} Title of the page {% endcomment %}
+{% block title %}Home{% endblock title %}
+
+{% comment %} Body of the page {% endcomment %}
+{% block body %}
+
+<!-- Output Message message (Bootstrap-v5 only) -->
+{% for msg in messages %}
+  {% if msg.level_tag == 'error' %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="bi bi-exclamation-octagon-fill"></i>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      {{msg.message}}
+    </div>
+  {% else %}
+    <div class="alert alert-{{msg.level_tag}} alert-dismissible fade show" role="alert">
+      <i class="bi bi-{% if msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      {{msg.message}}
+    </div>
+  {% endif %}
+{% endfor %}
+
+<div class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="hero-text">
+                    <h4 class="text-uppercase">The new solution is with</h4>
+                    <h1><span class="kmer">KMER</span><span class="drive">DRIVE</span></h1>
+                    <p>
+                        It is no more a question of distance, localisation nor time. We make sure to get you to your destination through the
+                        correct route. Just give us a try and be dazzled.
+                    </p>
+                    <a href="#services" class="btn get-started">Get Started</a>
+
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'webapp:app' pk=user.id user=user.username %}" class="btn get-started-text">My Dashboard</a>
+                    {% else %}
+                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Connect
+                    </a>
+                  
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'webapp:login' %}"><i class="fa fa-user-circle" aria-hidden="true"></i> Login</a></li>
+                      <li><a class="dropdown-item" href="{% url 'webapp:register' %}"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a></li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="hero-form">
+                    <div class="hero-form-intro">
+                        <span class="text-uppercase d-none" id="value"></span> <small class="d-none" id="xaf">XAF</small><br>
+                        <img src="{% static 'img/logo-transport-white.png' %}" alt=""> <br>
+                        <small class="text-muted">
+                            Need a trip cost estimation ?
+                        </small>
+                    </div>
+                    <form class="row g-3 needs-validation" novalidate>
+                      
+                      <div class="col-md-12">
+                        <!-- <label for="input1" class="form-label">Départ</label> -->
+                        <div class="input-group has-validation">
+                          <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-map-marker-alt" aria-hidden="true"></i></span>
+                          <input type="text" class="form-control" id="input3" aria-describedby="inputGroupPrepend" placeholder="Start (Ex. Ekounou marché)" required>
+                          <div class="invalid-feedback">
+                            Please enter a starting point.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12">
+                        <!-- <label for="input2" class="form-label">Arrivé</label> -->
+                        <div class="input-group has-validation">
+                          <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-map-signs" aria-hidden="true"></i></span>
+                          <input type="text" class="form-control" id="input3" aria-describedby="inputGroupPrepend" placeholder="Destination (Ex. Château Ngoa-ekele)" required>
+                          <div class="invalid-feedback">
+                            Please enter a destination point.
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-12">
+                        <button class="btn" type="submit">Estimate my trip cost.</button>
+                      </div>
+                    </form>
+                    <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function () {
+                      'use strict'
+                    
+                      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                      var forms = document.querySelectorAll('.needs-validation')
+                    
+                      // Loop over them and prevent submission
+                      Array.prototype.slice.call(forms)
+                        .forEach(function (form) {
+                          form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                              event.preventDefault()
+                              event.stopPropagation()
+                            } else {
+                                var valueReturn = document.getElementById('value');
+                                var xaf = document.getElementById('xaf');
+                                xaf.classList.remove('d-none');
+                                valueReturn.classList.remove('d-none');
+                                valueReturn.innerHTML = '~ 1234';
+                                
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+                    
+                            form.classList.add('was-validated')
+                          }, false)
+                        })
+                    })()
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+  <!-- ========== Start Flip Card ========== -->
+  <div class="row" id="services">
+    <div class="col-md-12">
+      <div class="section-title">
+        <h1>Assistance</h1>
+        <h2>Our Services</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="box-item col-md-6 col-sm-12 col-lg-3">
+      <div class="flip-box">
+        <div class="flip-box-front" style="background-image: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.7)), url('../static/img/img3.jpg')">
+          <div class="inner-fr d-flex align-items-center justify-content-between">
+            <div class="">
+              <h3 class="flip-box-header inner-front">Pedestrian</h3>
+            <p>
+              Whether take a drive or not ?
+            </p>
+            </div>
+            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="flip-box-back">
+          <div class="inner-ba">
+            <h3 class="flip-box-header inner-back"><span>Ped</span>estrian</h3>
+            <p>
+              Not always easy to know when it's really appropriate to get a taxi or just continue your way by trekking ? <b>KmerDrive</b>
+              helps you to evaluate your expenses and gives you the details about your route, concerning the distance, cost and
+              estimated arrival time.
+            </p>
+            {% if user.is_authencicated %}
+            <a href="{% url 'webapp:app' pk=user.id user=user.username %}">
+              <button class="flip-box-button text-capitalize">
+                Give a try <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </a>
+            {% else %}
+            <a href="{% url 'webapp:login' %}">
+              <button class="flip-box-button text-capitalize">
+                Give a try <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-item col-md-6 col-sm-12 col-lg-3">
+      <div class="flip-box">
+        <div class="flip-box-front" style="background-image: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.7)), url('../static/img/img4.jpg')">
+          <div class="inner-fr d-flex align-items-center justify-content-between">
+            <div class="">
+              <h3 class="flip-box-header inner-front">Tourist</h3>
+            <p>
+              First time ever ?
+            </p>
+            </div>
+            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="flip-box-back">
+          <div class="inner-ba">
+            <h3 class="flip-box-header inner-back"><span>Tou</span>rist</h3>
+            <p>
+              Don't whether about if it is your first time here. <b>KmerDrive</b> will guide you throughout the area, showing you some
+              amazing places to visit and also making sure you don't spend a lot on transport.
+            </p>
+            {% if user.is_authenticated %}
+            <a href="{% url 'webapp:app' pk=user.id user=user.username %}">
+              <button class="flip-box-button text-capitalize">
+                Let's Start <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </a>
+            {% else %}
+            <a href="{% url 'webapp:login' %}">
+              <button class="flip-box-button text-capitalize">
+                Let's Start <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-item col-md-6 col-sm-12 col-lg-3">
+      <div class="flip-box">
+        <div class="flip-box-front" style="background-image: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.7)), url('../static/img/img1.jpg')">
+          <div class="inner-fr d-flex align-items-center justify-content-between">
+            <div class="">
+              <h3 class="flip-box-header inner-front">Vehicled</h3>
+            <p>
+              You better got a vehicle!
+            </p>
+            </div>
+            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="flip-box-back">
+          <div class="inner-ba">
+            <h3 class="flip-box-header inner-back"><span>Veh</span>icled</h3>
+            <p>
+              Some of us like moving around with our cars/bikes/etc. No problem! <b>KmerDrive</b> also have a solution for you all. Is it
+              that you wish the best and good roads ? Or something else ?
+            </p>
+            {% if user.is_authenticated %}
+            <a href="{% url 'webapp:app' pk=user.id user=user.username %}">
+              <button class="flip-box-button text-capitalize">
+                Discover <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </a>
+            {% else %}
+            <a href="{% url 'webapp:login' %}">
+              <button class="flip-box-button text-capitalize">
+                Discover <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-item col-md-6 col-sm-12 col-lg-3">
+      <div class="flip-box">
+        <div class="flip-box-front" style="background-image: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.7)), url('../static/img/img2.jpg')">
+          <div class="inner-fr d-flex align-items-center justify-content-between">
+            <div class="">
+              <h3 class="flip-box-header inner-front">Taxi Driver</h3>
+            <p>
+              What if my vehicle is a taxi?
+            </p>
+            </div>
+            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="flip-box-back">
+          <div class="inner-ba">
+            <h3 class="flip-box-header inner-back"><span>Taxi</span> Driver</h3>
+            <p>
+              No problem! And I guess you wish to know those places where you can find a large number of poeple... <b>KmerDrive</b>
+              provides all those for you for free!
+            </p>
+            {% if user.is_authenticated %}
+            <a href="{% url 'webapp:app' pk=user.id user=user.username %}">
+              <button class="flip-box-button text-capitalize">
+                Discover <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </a>
+            {% else %}
+            <a href="{% url 'webapp:login' %}">
+              <button class="flip-box-button text-capitalize">
+                Discover <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ========== End Flip Card ========== -->
+
+  <!-- ========== Start Project Description ========== -->
+  <section id="description">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title">
+          <h1>Team</h1>
+          <h2>Members</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-lg-6 col-sm-12">
+        <div class="description-text">
+          <div class="project-icons">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <div class="icon">
+                  <i class="fa fa-map-marker-alt" aria-hidden="true" title="Localisation"></i>
+                </div>
+              </li>
+              <li class="list-inline-item">
+                <div class="icon">
+                  <i class="fa fa-map" aria-hidden="true" title="Guide Map"></i>
+                </div>
+              </li>
+              <li class="list-inline-item">
+                <div class="icon">
+                  <i class="fa fa-taxi" aria-hidden="true" title="Transport Vehicle"></i>
+                </div>
+              </li>
+              <li class="list-inline-item">
+                <div class="icon">
+                  <i class="fab fa-python" aria-hidden="true" title="Python OOP"></i>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <br>
+          <div class="subject">
+            <h4>All about Hardwork, Engagement &amp; Smartness !</h4>
+            <p>
+              Being a group of <strong>Computer Science Year 2</strong> students composed of four (04) members:
+            </p>
+              <ol>
+                <li>Dejon Fah Joel - Matricule XXXXXXX</li>
+                <li>Domche Lythevine - Matricule XXXXXXX</li>
+                <li>Joseline - Matricule XXXXXXX</li>
+                <li>Nicodeme - Matricule XXXXXXX</li>
+              </ol>
+            <p class="subject-description">
+              For the Practical Programming Work of Object-Oriented, we were asked to realize a practical solution using the said paradigm, 
+              associated to that a geographical map and all in an interface of our choice implemented with the desired programming languages, 
+              which should help guide any user in its movements given its current position/location.<span class="read-more"><a href="">[...Read More]</a></span>
+            </p>
+            
+
+              <!-- Pour ce faire, nous avons choisi d'utiliser les outils suivants: <br>
+              <ul>
+                <li>
+                  <strong>Python</strong> comme langage de programmation oriente-objet (essentiellemnent pour le backend), Nous travailerons plus avec son Framework : <em>Django (version 4.0)</em>
+                </li>
+                <li>
+                  <strong>Sqlite</strong> comme base de donnees locale.
+                </li>
+                <li>
+                  <strong>HTML5, CSS3 et JavaScript pour le cote frontend.</strong>
+                </li>
+              </ul> 
+            </p>
+            <p class="read-more">Read More</p> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-6 col-sm-12">
+        <div id = "cube-container">	
+          <div class = "cube align-items-center">		
+            <img src = "{% static 'img/profiles/joelfah.webp' %}" class="img-fluid" title="Person 1">
+            <img src = "{% static 'img/img2.jpg' %}" class="img-fluid" title="Person 2">
+            <img src = "{% static 'img/img3.jpg' %}" class="img-fluid" title="Person 3">
+            <img src = "{% static 'img/img4.jpg' %}" class="img-fluid" title="Person 4">
+          </div>
+          <div class="rect"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ========== End Project Description ========== -->
+
+  <!-- ========== Start Testimonilas ========== -->
+  <section id="testimonials">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title">
+          <h1>Thoughts</h1>
+          <h2>Testimonials</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="messages">
+
+        <div class="thought">
+          The service was excellent. It really saves me time and effort. KmerDrive is exactly what our business has been lacking.
+          The service was excellent. After using KmerDrive my business skyrocketed! <br>
+          <em class="float-end text-dark text-decoration-underline"><strong>Angela. F</strong></em>
+          <em class="text-dark">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+          </em>
+        </div>
+
+        <div class="thought mobile-restrict">
+          It's really wonderful. It's really wonderful. Not able to tell you how happy I am with KmerDrive. Thanks KmerDrive! <br>
+          <em class="float-end text-dark text-decoration-underline"><strong>Pyotr. O</strong></em>
+          <em class="text-dark">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+          </em>
+        </div>
+
+        <div class="thought mobile-restrict">
+          Your company is truly upstanding and is behind its product 100%. I wish I would have thought of it first. <br>
+          <em class="float-end text-dark text-decoration-underline"><strong>Ricki. Y</strong></em>
+          <em class="text-dark">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+          </em>
+        </div>
+        
+        <a href="" class="read-all desktop-restrict"><i>Read All..</i></a>
+      </div>
+
+      
+    </div>
+  </section>  
+  <!-- ========== End Testimonials ========== -->
+</div>
+{% endblock body %}
