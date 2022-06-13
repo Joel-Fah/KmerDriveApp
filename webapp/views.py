@@ -219,7 +219,7 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
         user = self.kwargs["user"]
         return reverse("webapp:account", kwargs={"pk": pk, "user": user})
     
-class NavigationView(LoginRequiredMixin ,TemplateView):
+class NavigationView(LoginRequiredMixin, View):
     template_name = 'navigation.html'
     
     def get(self, request, *args, **kwargs):
@@ -234,7 +234,7 @@ class NavigationView(LoginRequiredMixin ,TemplateView):
         }
         return render(request, self.template_name, context)
 
-class BookingView(LoginRequiredMixin, TemplateView):
+class BookingView(LoginRequiredMixin, View):
     template_name = 'booking.html'
 
     def get(self, request, *args, **kwargs):

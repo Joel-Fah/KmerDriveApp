@@ -37,7 +37,7 @@
                     </p>
                     <a href="#services" class="btn get-started">Get Started</a>
 
-                    {% if user.is_authenticated %}
+                    {% if request.user.is_authenticated %}
                     <a href="{% url 'webapp:app' pk=user.id user=user.username %}" class="btn get-started-text">My Dashboard</a>
                     {% else %}
                     <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -196,7 +196,7 @@
               Don't whether about if it is your first time here. <b>KmerDrive</b> will guide you throughout the area, showing you some
               amazing places to visit and also making sure you don't spend a lot on transport.
             </p>
-            {% if user.is_authenticated %}
+            {% if request.user.is_authenticated %}
             <a href="{% url 'webapp:app' pk=user.id user=user.username %}">
               <button class="flip-box-button text-capitalize">
                 Let's Start <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -234,7 +234,7 @@
               Some of us like moving around with our cars/bikes/etc. No problem! <b>KmerDrive</b> also have a solution for you all. Is it
               that you wish the best and good roads ? Or something else ?
             </p>
-            {% if user.is_authenticated %}
+            {% if request.user.is_authenticated %}
             <a href="{% url 'webapp:app' pk=user.id user=user.username %}">
               <button class="flip-box-button text-capitalize">
                 Discover <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -272,7 +272,7 @@
               No problem! And I guess you wish to know those places where you can find a large number of poeple... <b>KmerDrive</b>
               provides all those for you for free!
             </p>
-            {% if user.is_authenticated %}
+            {% if request.user.is_authenticated %}
             <a href="{% url 'webapp:app' pk=user.id user=user.username %}">
               <button class="flip-box-button text-capitalize">
                 Discover <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -337,13 +337,13 @@
               Being a group of <strong>Computer Science Year 2</strong> students composed of four (04) members:
             </p>
               <ol>
-                <li>Dejon Fah Joel - Matricule XXXXXXX</li>
-                <li>Domche Lythevine - Matricule XXXXXXX</li>
-                <li>Joseline - Matricule XXXXXXX</li>
-                <li>Nicodeme - Matricule XXXXXXX</li>
+                <li>DEJON FAH Joel Xavier - 20U2806</li>
+                <li>DOMCHE WABO Lythevine Fraichenelle - 20U2851</li>
+                <li>TEDJUI KONGNE Nicodeme - 18A2765</li>
+                <li>MANTO JOUDA Joseline -  20U2736</li>
               </ol>
             <p class="subject-description">
-              For the Practical Programming Work of Object-Oriented, we were asked to realize a practical solution using the said paradigm, 
+              For the Practical Programming Work of the Object-Oriented course, INF 2054, we were asked to realize a practical solution using the said paradigm, 
               associated to that a geographical map and all in an interface of our choice implemented with the desired programming languages, 
               which should help guide any user in its movements given its current position/location.<span class="read-more"><a href="">[...Read More]</a></span>
             </p>
@@ -369,10 +369,10 @@
       <div class="col-md-12 col-lg-6 col-sm-12">
         <div id = "cube-container">	
           <div class = "cube align-items-center">		
-            <img src = "{% static 'img/profiles/joelfah.webp' %}" class="img-fluid" title="Person 1">
-            <img src = "{% static 'img/img2.jpg' %}" class="img-fluid" title="Person 2">
-            <img src = "{% static 'img/img3.jpg' %}" class="img-fluid" title="Person 3">
-            <img src = "{% static 'img/img4.jpg' %}" class="img-fluid" title="Person 4">
+            <img src = "{% static 'img/profiles/joelfah.webp' %}" class="img-fluid" title="Joel Fah">
+            <img src = "{% static 'img/profiles/nico.jpeg' %}" class="img-fluid" title="Nicodeme">
+            <img src = "{% static 'img/profiles/lina.jpg' %}" class="img-fluid" title="Lythevine">
+            <img src = "{% static 'img/profiles/joseline.jpg' %}" class="img-fluid" title="Person 4">
           </div>
           <div class="rect"></div>
         </div>
