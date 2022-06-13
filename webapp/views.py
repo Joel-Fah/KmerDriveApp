@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
 from django.utils.safestring import mark_safe
 from django.contrib.auth import authenticate, login, logout
+from requests import get
 from .forms import ContactForm, UserRegisterForm
 from .models import UserProfileInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -187,11 +188,6 @@ class AccountView(LoginRequiredMixin,UpdateView):
         }
         return render(request, self.template_name, context)
     
-    # def get_context_data(self,*args, **kwargs):
-    #     context = super(AccountView, self).get_context_data(*args,**kwargs)
-    #     context['query'] = UserProfileInfo.objects.all()
-    #     return context
-    
     
 class UpdateUserView(LoginRequiredMixin, UpdateView):
     model = User
@@ -231,6 +227,22 @@ class NavigationView(LoginRequiredMixin ,TemplateView):
         user = get_object_or_404(User, username=self.kwargs["user"])
         query = UserProfileInfo.objects.all()
         context = {
+            'nbar': 'navigation',
+            'pk': pk,
+            'user': user,
+            'query': query
+        }
+        return render(request, self.template_name, context)
+
+class BookingView(LoginRequiredMixin, TemplateView):
+    template_name = 'booking.html'
+
+    def get(self, request, *args, **kwargs):
+        pk =get_object_or_404(User, id=self.kwargs["pk"])
+        user = get_object_or_404(User, username=self.kwargs["user"])
+        query = UserProfileInfo.objects.all()
+        context = {
+            'nbar': 'booking',
             'pk': pk,
             'user': user,
             'query': query
@@ -239,3 +251,4 @@ class NavigationView(LoginRequiredMixin ,TemplateView):
 
 class page_not_found_view(TemplateView):
     template_name = '404.html'
+    

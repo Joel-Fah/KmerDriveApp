@@ -1,0 +1,131 @@
+{% extends 'main_app.html' %}
+{% load static %}
+
+<!-- Title of the page -->
+{% block title %}Booking{% endblock title %}
+
+<!-- Body of the page -->
+{% block body %}
+<div class="row">
+    <h2>Book Your trip...</h2>
+    <p>
+        Have a quick overview of how many personal or in domain drivers are waiting for you.
+    </p>
+    <div class="col-sm-12 col-md-4 col-lg-4 book-head">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{% static 'img/driver.webp' %}" class="img-fluid rounded-start" alt="personal">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h1 class="card-title">Personal - 10+</h1>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit sapiente nam mollitia incidunt
+                            exercitationem?
+                        </p>
+                        <p class="card-text"><small class="text-muted">Last updated 2 days ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-lg-4 book-head">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{% static 'img/taxi.jpg' %}" class="img-fluid rounded-start" alt="taximen">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h1 class="card-title">Taximen - 50+</h1>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit sapiente nam mollitia incidunt
+                            exercitationem?
+                        </p>
+                        <p class="card-text"><small class="text-muted">Last updated 30 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-lg-4 book-head">
+        <div class="card mb-3 bg-warning" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{% static 'img/available.jpg' %}" class="img-fluid rounded-start" alt="taximen">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h1 class="card-title" style="color: #272727;">Available ~ 15</h1>
+                        <p class="card-text" style="color: #272727;">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit sapiente nam mollitia incidunt
+                            exercitationem?
+                        </p>
+                        <p class="card-text" style="color: #272727;">
+                            <small class="text-muted">Last updated 10 mins ago</small>
+                            <a href="" class="btn btn-dark float-end" style="margin-top: -5px;">View List</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2>Personal Drivers' Listing...</h2>
+<p>
+    Have a quick overview of how many personal or in domain drivers are waiting for you.
+</p>
+<div class="row">
+    <div class="col-12 book-list">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Car Type</th>
+                  <th scope="col">Exp (years)</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Decision</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Dejon Fah Joel X.</td>
+                  <td>Toyota Avensis</td>
+                  <td>2</td>
+                  <td>Available<i class="bx bx-check fs-5 text-success fw-bold"></i></td>
+                  <td>
+                    <p>
+                        <a href="" class="btn btn-success">Book Now!</a>
+                        <a class="text-info mx-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          More Info <i class="bx bx-info-circle"></i>
+                        </a>
+                      </p>
+                      <div class="collapse" id="collapseExample" style="width: fit-content;">
+                        <div class="card card-body" style="background-color: #272727;">
+                          Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                        </div>
+                      </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Domche Lythevine</td>
+                  <td></td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+        </table>
+</div>
+
+{% endblock body %}
