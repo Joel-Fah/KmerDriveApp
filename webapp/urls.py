@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, ContactView, SignUpView, LoginView, LogoutView, ActionsView, AccountView, UpdateProfileView, UpdateUserView, NavigationView
+from .views import HomeView, ContactView, SignUpView, LoginView, LogoutView, ActionsView, AccountView, UpdateProfileView, UpdateUserView, NavigationView, BookingView
 
 # Create your urls here
 
@@ -16,4 +16,5 @@ urlpatterns = [
     path('app/<str:pk>/<str:user>/account/update-profile-info', UpdateProfileView.as_view(), name='update_user'),
     path('app/<str:pk>/<str:user>/account/update-user-info', UpdateUserView.as_view(), name='update_profile'),
     path('app/<str:pk>/<str:user>/navigation/', NavigationView.as_view(), name='navigation'),
+    path('app/<str:pk>/<str:user>/booking/', BookingView.as_view(), name='booking'),
 ]

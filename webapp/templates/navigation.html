@@ -7,38 +7,120 @@
 <!-- Body of the page -->
 {% block body %}
 <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <div class="auto">
-            <div class="action action1">
-                <div class="head d-flex align-items-center justify-content-between">
-                    <h3>Set Navigation</h3>
-                    <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+    <div class="col-sm-12 col-md-6 col-lg-2">
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <form action="" method="post">
+                <h3>Select a mode of transport</h3>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="mode" id="mode1" value="{4:Car}" checked>
+                    <label class="form-check-label" for="mode1"><i class="bx bx-car"></i></label>
                 </div>
-                <p>
-                    It has never been that easy to leave from one point to the other. Let's have you some quick
-                    guidelines.
-                </p>
-                <!-- <a href="" class="btn">Start <i class="fa fa-chevron-right" aria-hidden="true"></i></a> -->
-                <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="#">Start </a>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="mode" id="mode2" value="Walk">
+                    <label class="form-check-label" for="mode2"><i class="bx bx-walk"></i></label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="mode" id="mode3" value="Train" disabled>
+                    <label class="form-check-label" for="mode3"><i class="bx bx-train"></i></label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="mode" id="mode4" value="Bike">
+                    <label class="form-check-label" for="mode4"><i class="bi bi-bicycle"></i></label>
+                </div>
+                <hr>
+                <h3>Navigation Details</h3>
+                <div class="mb-3">
+                    <label for="start" class="form-label">Starting Point</label>
+                    <input type="text" name="start" id="start" class="form-control" placeholder="From..."
+                        aria-describedby="helpId">
+                    <!-- <small id="helpId" class="text-muted">Help text</small> -->
+                </div>
+                <div class="mb-3">
+                    <label for="end" class="form-label" title="Not available">Destination</label>
+                    <input type="text" name="end" id="end" class="form-control" placeholder="To..."
+                        aria-describedby="helpId">
+                    <!-- <small id="helpId" class="text-muted">Help text</small> -->
+                </div>
+                <div class="mb-3">
+                    <label for="other" class="form-label">Add Destination</label>
+                    <input type="text" name="other" id="other" class="form-control" placeholder="Pass through..."
+                        aria-describedby="helpId">
+                    <!-- <small id="helpId" class="text-muted">Help text</small> -->
+                </div>
+                <hr>
+                <h3>About This Route</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-icon">
+                            <i class="bi bi-stoplights"></i> Usually a trafic road.
+                        </div>
+                        <div class="form-icon">
+                            <i class="bi bi-shop"></i> Touristic sites available.
+                        </div>
+                        <div class="form-icon">
+                            <i class="bi bi-compass"></i> Eco-friendly route.
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-icon">
+                            <i class="bi bi-cone-striped"></i> Probably paved roads.
+                        </div>
+                        <div class="form-icon">
+                            <i class="bi bi-signpost"></i> <b>~14.1 km</b>
+                        </div>
+                        <div class="form-icon">
+                            <i class="bi bi-clock-history"></i> <b>34 min</b>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Submit & View in map <i
+                        class="bi bi-send-fill"></i></button>
+            </form>
+        </div>
 
-                <!-- Use any element to open the sidenav -->
-                <span onclick="openNav()">open</span>
-
-                <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-                <div id="main">
-                    ...
+        <div id="main">
+            <button class="openbtn" onclick="openNav()">&#9776; Form</button>
+            <h3>About This Route</h3>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-icon">
+                        <i class="bi bi-cone-striped"></i> Probably paved roads.
+                    </div>
+                    <div class="form-icon">
+                        <i class="bi bi-signpost"></i> ~14.1 km
+                    </div>
+                    <div class="form-icon">
+                        <i class="bi bi-clock-history"></i> 34 min
+                    </div>
                 </div>
+            </div>
+            <hr>
+            <h3>Reviews</h3>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi odit quibusdam veritatis nemo accusamus
+                corrupti
+                laudantium? Ex doloribus quibusdam minima sint fugit numquam voluptate repellendus illum placeat. Eum
+                laborum labore
+                quod sapiente, repellendus voluptate vero reiciendis a mollitia aliquam et nesciunt harum quis,
+                laudantium officiis
+                itaque numquam rerum nisi eveniet eaque obcaecati dolor est!
+            </p>
+            <hr>
+            <div class="d-inline">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
             </div>
         </div>
     </div>
-    <hr>
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <small class="text-muted">
-            A map will surely go here...
-        </small>
+    <div class="col-sm-12 col-md-6 col-lg-10">
+        <iframe class="w-100"
+            src="https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d31846.768929331658!2d11.506722872766533!3d3.8431918403230543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x108bc5347ce2ba5d%3A0x76de28d6bce0db35!2sAwae%20Escalier%2C%20Yaound%C3%A9!3m2!1d3.8304452999999996!2d11.551481299999999!4m5!1s0x108bcf86f33e9e27%3A0x6ce698fc40310153!2sPoste%20Centrale%2C%20VG6C%2B4GC%2C%20Yaound%C3%A9!3m2!1d3.8606662!2d11.5203812!4m5!1s0x108bcfded0c96449%3A0xff9dab93a2a1fb47!2zTmdvYSBFa8OpbMOpLCBZYW91bmTDqQ!3m2!1d3.8309553999999997!2d11.497!5e0!3m2!1sen!2scm!4v1655064635850!5m2!1sen!2scm"
+            height="800px" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </div>
 {% endblock body %}

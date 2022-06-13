@@ -12,98 +12,109 @@
         <div class="col-sm-12 col-md-12 col-lg-12">
             <!-- Output Message message (Bootstrap-v5 only) -->
             {% for msg in messages %}
-                {% if msg.level_tag == 'error' %}
-                <div class="w-100 alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="bi bi-exclamation-octagon-fill"></i>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    {{msg.message}}
-                </div>
-                {% else %}
-                <div class="w-100 alert alert-{{msg.level_tag}} alert-dismissible fade show" role="alert">
-                    <i class="bi bi-{% if msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    {{msg.message}}
-                </div>
-                {% endif %}
+            {% if msg.level_tag == 'error' %}
+            <div class="w-100 alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-octagon-fill"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {{msg.message}}
+            </div>
+            {% else %}
+            <div class="w-100 alert alert-{{msg.level_tag}} alert-dismissible fade show" role="alert">
+                <i
+                    class="bi bi-{% if msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {{msg.message}}
+            </div>
+            {% endif %}
             {% endfor %}
             <h4>Navigation Map</h4>
             <div class="map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.9054858590353!2d11.549292614841518!3d3.8304506496544266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc5347ce2ba5d%3A0x76de28d6bce0db35!2sAwae%20Escalier!5e0!3m2!1sen!2scm!4v1650812642618!5m2!1sen!2scm" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <!-- <iframe src="https://api.mapbox.com/geocoding/v5/mapbox.places/11.55227728350655, 3.820005973968091.json?access_token=pk.eyJ1Ijoiam9lbGZhaCIsImEiOiJjbDRieXl1MTAwYWJsM2NxdndpamNldW5jIn0.L7f9La3LlUbeiZSyHIuZ_Q" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-6">
-            <h4>My Actions</h4>
-            <div class="auto">
-                <div class="action action1">
-                    <div class="head d-flex align-items-center justify-content-between">
-                        <h3>Set Navigation</h3>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.
-                    </p>
-                    <a href="{% url 'webapp:navigation' pk.id user.username %}" class="btn">Start <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                </div>
-            </div>
-            
-            <div class="auto">
-                <div class="action action2">
-                    <div class="head d-flex align-items-center justify-content-between">
-                        <h3>Amazing Places</h3>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.
-                    </p>
-                    <a href="" class="btn">Start <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                </div>
-            </div>
-            
-            <div class="auto">
-                <div class="action action3">
-                    <div class="head d-flex align-items-center justify-content-between">
-                        <h3>Crowded Areas</h3>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.
-                    </p>
-                    <a href="" class="btn">Start <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                </div>
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Services</h2>
+                <p>My Services</p>
             </div>
 
-            <div class="auto">
-                <div class="action action4">
-                    <div class="head d-flex align-items-center justify-content-between">
-                        <h3>Available Drivers</h3>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bxs-map-alt"></i></div>
+                        <h4><a href="{% url 'webapp:navigation' pk.id user.username %}">Navigation</a></h4>
+                        <p>
+                            Let's trace out the right way for you for where you're heading to.
+                        </p>
                     </div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua.
-                    </p>
-                    <a href="" class="btn">Start <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-sm-12 col-md-12 col-lg-6">
-            <h4>Some Other Actions</h4>
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bxs-purchase-tag"></i></div>
+                        <h4><a href="{% url 'webapp:booking' pk.id user.username %}">Booking</a></h4>
+                        <p>
+                            Our platform brings the drivers to the tap of your hand. Just remaining that you make your
+                            choice and book one of them for your trip.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bxs-buildings"></i></div>
+                        <h4><a href="">Places</a></h4>
+                        <p>
+                            You want to take some incredible shots for your memories but don't know where yet? Come
+                            let's show you where!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bxs-user-detail"></i></div>
+                        <h4><a href="">Crowded Areas</a></h4>
+                        <p>
+                            Exclusively for our vehicled users who made their vehicles an income generator, here some
+                            places where
+                            you'll be able to find people, 90% sure.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bxs-taxi"></i></div>
+                        <h4><a href="">Available Cars & Drivers</a></h4>
+                        <p>
+                            Who is around you? Who owns a vehicle and can help right away ? Discover!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bxs-happy-beaming"></i></div>
+                        <h4><a href="">Coming Soon</a></h4>
+                        <p>
+                            We are working hard to bring to you the best of our services. Enjoy while more is coming to
+                            tap
+                            of your hand.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-    </div>
+    </section>
+    <!-- End Services Section -->
 </div>
 {% endblock body %}
