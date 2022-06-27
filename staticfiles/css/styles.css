@@ -1,7 +1,13 @@
 /* Importing font from local folder */
-@import url('../fonts/GoogleSans-Regular-v1.27.ttf');
-@import url('../fonts/Heaters.otf');
+@font-face {
+  font-family: 'GoogleSans';
+  src: url('../fonts/GoogleSans-Regular-v1.27.ttf') format('truetype');
+}
 
+@font-face {
+  font-family: 'Heaters';
+  src: url('../fonts/Heaters.otf') format('opentype');
+}
 
 /* Declaration of variables */
 :root {
